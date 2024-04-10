@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Cadastrar_tarefa = () => {
   const { register, handleSubmit, reset} = useForm();
-  const [aviso, setAviso] = useState("");
+  const [aviso, setAviso ] = useState("");
 
   const salvar = async (campos) => {
     try {
