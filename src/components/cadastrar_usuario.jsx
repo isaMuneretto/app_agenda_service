@@ -21,105 +21,165 @@ const Cadastrar_Usuario = () => {
       <div className="container p-5 bg-light text-dark rounded">
         <h4 className="fst-italic mb-3">Cadastrar Usuário</h4>
         <form onSubmit={handleSubmit(salvar)}>
-          <div className="form-group">
-            <label htmlFor="name">Nome</label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              required
-              autoFocus
-              {...register("name")}
-            />
+          <div className="row mb-3">
+            <div className="col">
+              <div className="form-group">
+                <label htmlFor="name">Nome</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  required
+                  autoFocus
+                  {...register("name")}
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  placeholder="exemple@exemple.com"
+                  required
+                  {...register("email")}
+                />
+              </div>
+            </div>
           </div>
-          <div className="form-group mt-2">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              required
-              {...register("email")}
-            />
-          </div>
-          <div className="form-group mt-2">
-            <label htmlFor="cpf">CPF</label>
-            <input
-              type="cpf"
-              className="form-control"
-              id="cpf"
-              required
-              {...register("cpf")}
-            />
-          </div>
-          <div className="form-group mt-2">
-          <label htmlFor="data_nascimento">Data de Nascimento:</label>
+          <div className="row mb-3">
+            <div className="col-5">
+              <div className="form-group">
+                <label htmlFor="cpf">CPF</label>
+                <input
+                  type="cpf"
+                  className="form-control"
+                  id="cpf"
+                  required
+                  {...register("cpf")}
+                />
+              </div>
+            </div>
+            <div className="col-4">
+              <div className="form-group">
+                <label htmlFor="data_nascimento">Data de Nascimento</label>
                 <input
                   type="date"
                   className="form-control"
                   id="data_nascimento"
                   required
                   {...register("data_nascimento")}
-            />
-            </div>
-            <div class="form-group">
-              <label for="rua">Rua:</label>
-              <input type="text" 
-              class="form-control"
-               id="rua"
-                placeholder="Apartment, studio, or floor"
-                required
-              {...register("rua")}
-               />
-            </div>
-            <div class="form-group">
-              <label for="numero">Número:</label>
-              <input type="text" 
-              class="form-control"
-               id="numero"
-                placeholder=" "
-                required
-              {...register("numero")}
-               />
-            </div>
-            <div class="form-row">
-              <div class="col">
-                <label for="cidade">Cidade:</label>
-                <input type="text" 
-                class="form-control" 
-                id="cidade"
-              />
+                />
               </div>
-              <div class="col">
-                <label for="bairro">Bairro:</label>
-                <input type="text" 
-                class="form-control" 
-                id="bairro"
-              />
+            </div>
+          </div>
+          <div className="row mb-3">
+            <div className="col-5">
+              <div className="form-group">
+                <label for="rua">Rua</label>
+                <input type="text"
+                  class="form-control"
+                  id="rua"
+                  placeholder="Av, Rod, Rua..."
+                  required
+                  {...register("rua")}
+                />
               </div>
-              <div class="col">
-                <label for="estado">Estado</label>
-                <select id="estado" class="form-control">
-                  <option selected>Choose...</option>
+            </div>
+            <div className="col-1">
+              <div className="form-group">
+                <label for="numero">Número</label>
+                <input type="number"
+                  class="form-control"
+                  id="numero"
+                  placeholder="123..."
+                  required
+                  {...register("numero")}
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div className="form-group">
+              <label for="cidade">Cidade</label>
+                <input type="text"
+                  class="form-control"
+                  id="cidade"
+                  placeholder="Apartment, studio, or floor"
+                  required
+                  {...register("cidade")}
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div className="form-group">
+              <label for="bairro">Bairro</label>
+                <input type="text"
+                  class="form-control"
+                  id="bairro"
+                  placeholder="Apartment, studio, or floor"
+                  required
+                  {...register("bairro")}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="row mb-3">
+          <div className="col">
+              <div className="form-group">
+              <label htmlFor="estado">Estado</label>
+                <select id="estado" className="form-control">
+                  <option selected>Selecione...</option>
                   <option>...</option>
                 </select>
               </div>
-              <div class="col">
-                <label for="cep">CEP</label>
-                <input type="text" class="form-control" id="inputZip"/>
+            </div>
+            <div className="col">
+              <div className="form-group">
+              <label htmlFor="cep">CEP</label>
+                <input type="text"
+                 className="form-control" 
+                 id="cep" 
+                 placeholder="XXXXXX-XXX"
+                  required
+                  {...register("bairro")}
+                 />
               </div>
-            </div>         
+            </div>
+            <div className="col">
+              <div className="form-group">
+                <label for="telefone">Telefone para contato</label>
+                <input type="number"
+                  class="form-control"
+                  id="telefone"
+                  placeholder="9999-9999"
+                  required
+                  {...register("telefone")}
+                />
+              </div>
+            </div>
+          </div>
 
-            <input
-              type="submit"
-              className="btn btn-primary mt-3"
-              value="Enviar"
-            />
-            <input
-              type="reset"
-              className="btn btn-danger mt-3 ms-3"
-              value="Limpar"
-            />
+          <div className="form-group">
+            <div className="form-check">
+              <input className="form-check-input" type="checkbox" id="gridCheck" />
+              <label className="form-check-label" htmlFor="gridCheck">
+                Teste
+              </label>
+            </div>
+          </div>
+
+          <input
+            type="submit"
+            className="btn btn-primary mt-3"
+            value="Enviar"
+          />
+          <input
+            type="reset"
+            className="btn btn-danger mt-3 ms-3"
+            value="Limpar"
+          />
         </form>
         <div className="alert mt-3">{aviso}</div>
       </div>
