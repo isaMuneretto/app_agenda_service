@@ -2,24 +2,24 @@ import { useForm } from "react-hook-form";
 import { api } from "../config_axios";
 import { useState } from "react";
 
-const Cadastrar_tarefa = () => {
+const Cadastrar_prestador = () => {
   const { register, handleSubmit, reset} = useForm();
   const [aviso, setAviso ] = useState("");
 
   const salvar = async (campos) => {
     try {
-      const response = await api.post("tarefas", campos);
-      setAviso(`Tarefa cadastrada com sucesso!"`);
+      const response = await api.post("prestador", campos);
+      setAviso(`Prestador cadastrado com sucesso!"`);
       reset();
     } catch (error) {
-      setAviso("Erro ao cadastrar tarefa!");
+      setAviso("Erro ao cadastrar preatador!");
     }
   };
 
   return (
     <div className="container-fluid bg-dark text-light min-vh-100 d-flex align-items-center">
       <div className="container p-5 bg-light text-dark rounded">
-        <h4 className="fst-italic mb-3">Cadastrar Tarefa</h4>
+        <h4 className="fst-italic mb-3">Cadastrar Prestador</h4>
         <form onSubmit={handleSubmit(salvar)}>
           <div className="form-group">
             <label htmlFor="titulo">Titulo</label>
@@ -80,6 +80,7 @@ const Cadastrar_tarefa = () => {
               </div>
             </div>
           </div>
+          
           <input
             type="submit"
             className="btn btn-primary mt-3"
@@ -97,4 +98,4 @@ const Cadastrar_tarefa = () => {
   );
 };
 
-export default Cadastrar_tarefa;
+export default Cadastrar_prestador;
