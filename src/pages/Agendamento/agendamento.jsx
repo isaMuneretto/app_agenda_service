@@ -2,76 +2,74 @@ import { useForm } from "react-hook-form";
 import { api } from "../config_axios";
 import { useState } from "react";
 
-const Cadastrar_Prestador = () => {
-  const { register, handleSubmit, reset} = useForm();
-  const [aviso, setAviso ] = useState("");
+const Cadastrar_Agendamento = () => {
+  const { register, handleSubmit, reset } = useForm();
+  const [aviso, setAviso] = useState("");
 
   const salvar = async (campos) => {
     try {
-      const response = await api.post("prestador", campos);
-      setAviso(`Prestador cadastrado com sucesso!"`);
+      const response = await api.post("agendamento", campos);
+      setAviso(`Usuário cadastrado com sucesso!"`);
       reset();
     } catch (error) {
-      setAviso("Erro ao cadastrar preatador!");
+      setAviso("Erro ao cadastrar usuário!");
     }
   };
 
   return (
     <div className="container-fluid bg-dark text-light min-vh-100 d-flex align-items-center">
       <div className="container p-5 bg-light text-dark rounded">
-        <h4 className="fst-italic mb-3">Cadastrar Prestador de Serviço</h4>
+        <h4 className="fst-italic mb-3">Agendamento</h4>
+        
         <form onSubmit={handleSubmit(salvar)}>
-        <div className="row mb-3">
+          <div className="row mb-3">
             <div className="col">
               <div className="form-group">
-                <label htmlFor="name">Nome</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  required
-                  autoFocus
-                  {...register("name")}
-                />
+                <label htmlFor="servico">Serviços</label>
+                <select id="servico" className="form-control">
+                  <option selected>Selecione...</option>
+                  <option>Marido de aluguel</option>
+                  <option>Eletricista</option>
+                  <option>Encanador</option>
+                  <option>Cortar grama</option>
+                </select>
               </div>
             </div>
             <div className="col">
               <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  placeholder="exemple@exemple.com"
-                  required
-                  {...register("email")}
-                />
+              <label htmlFor="prestadores">Prestadores de Serviço</label>
+                <select id="prestadores" className="form-control">
+                  <option selected>Selecione...</option>
+                  <option>João da Silva</option>
+                  <option>Paulo Rodrigues</option>
+                  <option>José dos Santos</option>
+                  <option>Renata Souza</option>
+                </select>
               </div>
             </div>
           </div>
           <div className="row mb-3">
             <div className="col-5">
               <div className="form-group">
-                <label htmlFor="cnpj">CNPJ</label>
+                <label htmlFor="data">Data Agendamento</label>
                 <input
-                  type="cnpj"
+                  type="cpf"
                   className="form-control"
-                  id="cnpj"
+                  id="cpf"
                   required
-                  {...register("cnpj")}
+                  {...register("cpf")}
                 />
               </div>
             </div>
             <div className="col-4">
               <div className="form-group">
-              <label htmlFor="razao">Razão Social</label>
+              <label htmlFor="data_agendamento">Data Agendamento</label>
                 <input
-                  type="text"
+                  type="date"
                   className="form-control"
-                  id="razao"
+                  id="data_agendamento"
                   required
-                  autoFocus
-                  {...register("razao")}
+                  {...register("data_agendamento")}
                 />
               </div>
             </div>
@@ -188,4 +186,4 @@ const Cadastrar_Prestador = () => {
   );
 };
 
-export default Cadastrar_Prestador;
+export default Cadastrar_Agendamento;
