@@ -1,5 +1,6 @@
 import Menu_Superior from './components/MenuSuperior';
 import FormularioLogin from './components/login';
+import Home from './pages/Home/home';
 import Cadastrar_Usuarios from './components/cadastrar_usuario';
 import Cadastrar_Prestador from './components/cadastrar_prestador';
 import Cadastrar_Agendamento from './pages/Agendamento/agendamento';
@@ -24,6 +25,7 @@ const RoutesWithAuth = () => {
                 <Route path="/prestador" element={<Cadastrar_Prestador />} />                
                 <Route path="/user" element={<Cadastrar_Usuarios />}/>
                 <Route path="/agenda" element={<Cadastrar_Agendamento />}/>
+                <Route path="/home" element={<Home/>} />
             </Routes>
         </Router>
     );

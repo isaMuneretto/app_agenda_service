@@ -2,24 +2,17 @@ import { Link } from "react-router-dom";
 
 const MenuSuperior = () => {
   return (
-    <nav className="navbar navbar-expand-sm bg-primary navbar-dark sticky-top">
-      <div className="container">
-        <Link to="/" className="navbar-brand">Controle de Tarefas</Link>
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">Incluir Tarefa</Link>
-          </li>
-          
-          <li className="nav-item">
-            <Link to="/manutencao" className="nav-link">Manutenção de Tarefas</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/user" className="nav-link">Cadastrar Usuário</Link>
-          </li>
-          
-        </ul>
-      </div>
-    </nav>
+
+    <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <Link to="/agenda" className="navbar-brand">Agendamento de Serviços</Link>
+    
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
   );
 };
 

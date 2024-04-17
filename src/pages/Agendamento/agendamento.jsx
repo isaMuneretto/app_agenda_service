@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { api } from "../config_axios";
+import { api } from "../../config_axios";
 import { useState } from "react";
 
 const Cadastrar_Agendamento = () => {
