@@ -16,9 +16,15 @@ const Cadastrar_Usuario = () => {
     }
   };
 
+  const handleVoltar = () => {
+    window.location.href = '/login'; // Redireciona para a rota /login
+  };
+
+
   return (
-    <div className="container-fluid bg-dark text-light min-vh-100 d-flex align-items-center">
-      <div className="container p-5 bg-light text-dark rounded">
+    <div className="container-fluid bg-light text-dark min-vh-100 d-flex align-items-center">
+      <div className="container p-4 bg-body-secondary text-dark rounded border border-dark">
+      <input class="btn-close float-end" type="button" aria-label="Close" onClick={handleVoltar} />
         <h4 className="fst-italic mb-3">Cadastrar Usuário</h4>
         <form onSubmit={handleSubmit(salvar)}>
           <div className="row mb-3">

@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { AuthProvider, useAuth } from './components/AuthProvider';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import MenuSuperior from './components/MenuSuperior';
+
 const ProtectedRoute = ({ children }) => {
     const { autenticado } = useAuth();
     return autenticado ? children : <Navigate to="/login" />;
@@ -19,14 +21,14 @@ const RoutesWithAuth = () => {
     return (
         <Router>
             {/* {autenticado &&}  */}
-            <Menu_Superior />
+     
             <Routes>
                 <Route path="/login" element={<FormularioLogin />} />
-                <Route path="/" element={autenticado ? <Navigate to="/tarefas" /> : <FormularioLogin />} />
-                <Route path="/prestador" element={<Cadastrar_Prestador />} />                
-                <Route path="/user" element={<Cadastrar_Usuarios />}/>
+                {/* <Route path="/" element={autenticado ? <Navigate to="/tarefas" /> : <FormularioLogin />} /> */}
+                <Route path="/prestador" element={<><MenuSuperior/><Cadastrar_Prestador /></>} />                
+                <Route path="/user" element={<><Menu_Superior /><Cadastrar_Usuarios /></>}/>
                 <Route path="/agenda" element={<Cadastrar_Agendamento />}/>
-                <Route path="/home" element={<Home/>} />
+                <Route path="/home" element={<><Menu_Superior /><Home /></>} />
             </Routes>
         </Router>
     );
