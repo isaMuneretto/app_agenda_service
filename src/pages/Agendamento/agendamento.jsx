@@ -51,25 +51,25 @@ const Cadastrar_Agendamento = () => {
           <div className="row mb-3">
             <div className="col-5">
               <div className="form-group">
-                <label htmlFor="data">Data Agendamento</label>
+                <label htmlFor="data_inicio">Data Início</label>
                 <input
-                  type="cpf"
+                  type="date"
                   className="form-control"
-                  id="cpf"
+                  id="data_inicio"
                   required
-                  {...register("cpf")}
+                  {...register("data_inicio")}
                 />
               </div>
             </div>
             <div className="col-4">
               <div className="form-group">
-              <label htmlFor="data_agendamento">Data Agendamento</label>
+              <label htmlFor="hora">Horário</label>
                 <input
-                  type="date"
+                  type="time"
                   className="form-control"
-                  id="data_agendamento"
+                  id="hora"
                   required
-                  {...register("data_agendamento")}
+                  {...register("hora")}
                 />
               </div>
             </div>
@@ -77,73 +77,13 @@ const Cadastrar_Agendamento = () => {
           <div className="row mb-3">
             <div className="col-5">
               <div className="form-group">
-                <label for="rua">Rua</label>
+                <label for="obs">Observação</label>
                 <input type="text"
                   class="form-control"
-                  id="rua"
-                  placeholder="Av, Rod, Rua..."
+                  id="obs"
                   required
-                  {...register("rua")}
+                  {...register("obs")}
                 />
-              </div>
-            </div>
-            <div className="col-1">
-              <div className="form-group">
-                <label for="numero">Número</label>
-                <input type="number"
-                  class="form-control"
-                  id="numero"
-                  placeholder="123..."
-                  required
-                  {...register("numero")}
-                />
-              </div>
-            </div>
-            <div className="col">
-              <div className="form-group">
-              <label for="cidade">Cidade</label>
-                <input type="text"
-                  class="form-control"
-                  id="cidade"
-                  placeholder="Apartment, studio, or floor"
-                  required
-                  {...register("cidade")}
-                />
-              </div>
-            </div>
-            <div className="col">
-              <div className="form-group">
-              <label for="bairro">Bairro</label>
-                <input type="text"
-                  class="form-control"
-                  id="bairro"
-                  placeholder="Apartment, studio, or floor"
-                  required
-                  {...register("bairro")}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="row mb-3">
-          <div className="col">
-              <div className="form-group">
-              <label htmlFor="estado">Estado</label>
-                <select id="estado" className="form-control">
-                  <option selected>Selecione...</option>
-                  <option>...</option>
-                </select>
-              </div>
-            </div>
-            <div className="col">
-              <div className="form-group">
-              <label htmlFor="cep">CEP</label>
-                <input type="text"
-                 className="form-control" 
-                 id="cep" 
-                 placeholder="XXXXXX-XXX"
-                  required
-                  {...register("bairro")}
-                 />
               </div>
             </div>
             <div className="col">
@@ -172,12 +112,12 @@ const Cadastrar_Agendamento = () => {
           <input
             type="submit"
             className="btn btn-primary mt-3"
-            value="Enviar"
+            value="Agendar"
           />
           <input
             type="reset"
             className="btn btn-danger mt-3 ms-3"
-            value="Limpar"
+            value="Voltar"
           />
         </form>
         <div className="alert mt-3">{aviso}</div>
