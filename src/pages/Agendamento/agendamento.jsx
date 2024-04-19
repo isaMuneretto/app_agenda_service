@@ -117,7 +117,7 @@ const Cadastrar_Agendamento = () => {
           <input
             type="reset"
             className="btn btn-danger mt-3 ms-3"
-            value="Voltar"
+            value="Limpar"
           />
         </form>
         <div className="alert mt-3">{aviso}</div>

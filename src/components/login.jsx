@@ -29,67 +29,51 @@ const FormularioLogin = () => {
     };
 
     return (
-
-        <section className="vh-100">
-        <div className="container py-5 h-100">
-            <div className="row d-flex align-items-center justify-content-center h-100">
-                <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">   
+        <div className="container-fluid py-2">
+            <div className="container d-flex align-items-center justify-content-center vh-100">
+                <div className="border border-2 rounded-3 col-md-7 col-lg-5 col-xl-5 px-4">
                     <form onSubmit={handleSubmit}>
-                        <div className="form-outline mb-4">
-                            <input type="text" id="username" className="form-control form-control-lg" value={username} onChange={(e) => setUsername(e.target.value)} />
-                            <label className="form-label" htmlFor="username">Usuário</label>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email </label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={username} onChange={(e) => setUsername(e.target.value)} />
                         </div>
-                        <div className="form-outline mb-4">
-                            <input type="password" id="senha" className="form-control form-control-lg" value={senha} onChange={(e) => setSenha(e.target.value)} />
-                            <label className="form-label" htmlFor="senha">Senha</label>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Password</label>
+                            <input type="senha" class="form-control" id="exampleInputPassword1" value={senha} onChange={(e) => setSenha(e.target.value)} />
                         </div>
-                       
-                        <button type="submit" className="btn btn-primary btn-lg btn-block">Login</button>
-                        <div class="row mb-2">
-                <div class="col d-flex justify-content-center">
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                        <label class="form-check-label" for="form2Example31"> Lembrar de mim </label>
-                    </div>
-                </div>
-
-                <div class="col">
-
-                    <a href="#!">Esqueceu a senha?</a>
-                </div>
-            </div>
-
-            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Entrar</button>
-
-
-            <div class="text-center">
-                <p>Não tem login? <a href="/user">Cadastre-se como usuário</a></p>
-                <p>ou :<a href="/prestador">Cadastre-se como prestador de serviço</a></p>
-                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                </button>
-
-                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-google"></i>
-                </button>
-
-                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                </button>
-
-                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-github"></i>
-                </button>
+                        <div className="col">
+                            <a href="#!">Esqueceu a senha?</a>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Entrar</button>
                         
-                </div>
+                        <div className="text-center">
+                            <p>Não tem login? <a href="/user">Cadastre-se como usuário</a></p>
+                            <p><a href="/prestador">Cadastre-se como prestador de serviço</a></p>
+
+                            <button type="button" className="btn btn-link btn-floating mx-1">
+                                <i className="fab fa-facebook-f"></i>
+                            </button>
+
+                            <button type="button" className="btn btn-link btn-floating mx-1">
+                                <i className="fab fa-google"></i>
+                            </button>
+
+                            <button type="button" className="btn btn-link btn-floating mx-1">
+                                <i className="fab fa-twitter"></i>
+                            </button>
+
+                            <button type="button" className="btn btn-link btn-floating mx-1">
+                                <i className="fab fa-github"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-    </section>
-
-
     )
 };
 

@@ -24,7 +24,7 @@ const RoutesWithAuth = () => {
      
             <Routes>
                 <Route path="/login" element={<FormularioLogin />} />
-                {/* <Route path="/" element={autenticado ? <Navigate to="/tarefas" /> : <FormularioLogin />} /> */}
+                <Route path="/" element={autenticado ? <Navigate to="/login" /> : <FormularioLogin />} /> 
                 <Route path="/prestador" element={<><MenuSuperior/><Cadastrar_Prestador /></>} />                
                 <Route path="/user" element={<><Menu_Superior /><Cadastrar_Usuarios /></>}/>
                 <Route path="/agenda" element={<Cadastrar_Agendamento />}/>
