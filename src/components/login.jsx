@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { api } from "../config_axios";
 
 const FormularioLogin = () => {
-    const [username, setUsername] = useState("");
+    const [email, setUsername] = useState("");
     const [senha, setSenha] = useState("");
     const { login } = useAuth();
 
@@ -29,46 +29,32 @@ const FormularioLogin = () => {
     };
 
     return (
-        <div className="container-fluid py-2">
+        <div className="container-fluid bg-light py-2">
             <div className="container d-flex align-items-center justify-content-center vh-100">
-                <div className="border border-2 rounded-3 col-md-7 col-lg-5 col-xl-5 px-4">
+                <div className="p-5 bg-body-secondary rounded-3 border border-2 w-28">
+                    <h2>Login</h2><br></br>
                     <form onSubmit={handleSubmit}>
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email </label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={username} onChange={(e) => setUsername(e.target.value)} />
+                            <label for="email" class="form-label">Email </label>
+                            <input type="email" placeholder="Identificação de usuário" class="form-control rounded-0 border border-dark" id="email" aria-describedby="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div class="mb-3">
-                            <label for="senha" class="form-label">Password</label>
-                            <input type="senha" class="form-control" id="exampleInputPassword1" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="senha" placeholder="Senha" class="form-control rounded-0 border border-dark" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
                         </div>
-                        <div className="col">
+                        <div className="col mb-3">
                             <a href="#!">Esqueceu a senha?</a>
                         </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Entrar</button>
-                        
                         <div className="text-center">
-                            <p>Não tem login? <a href="/user">Cadastre-se como usuário</a></p>
-                            <p><a href="/prestador">Cadastre-se como prestador de serviço</a></p>
+                            <button type="submit" class="w-100 btn btn-primary rounded-0 mb-2">Entrar</button>
+                        </div>
 
-                            <button type="button" className="btn btn-link btn-floating mx-1">
-                                <i className="fab fa-facebook-f"></i>
-                            </button>
-
-                            <button type="button" className="btn btn-link btn-floating mx-1">
-                                <i className="fab fa-google"></i>
-                            </button>
-
-                            <button type="button" className="btn btn-link btn-floating mx-1">
-                                <i className="fab fa-twitter"></i>
-                            </button>
-
-                            <button type="button" className="btn btn-link btn-floating mx-1">
-                                <i className="fab fa-github"></i>
-                            </button>
+                        <div className="text-center">
+                            <p><small>Não tem login?</small></p>
+                            <div className="mb-3">
+                                <a class="w-100 btn btn-default btn btn-outline-primary rounded-0 mt-2" href="/user" role="button">Cadastre-se como usuário</a>
+                            </div>
+                            <a class="w-100 btn btn-default btn btn-outline-primary rounded-0" href="/prestador" role="button">Cadastre-se como prestador de serviço</a>
                         </div>
                     </form>
                 </div>
