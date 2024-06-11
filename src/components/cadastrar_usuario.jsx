@@ -192,7 +192,7 @@ const Cadastrar_Usuario = () => {
             </div>
             <div className="col">
               <div className="form-group">
-                <label for="telefoneNumero">Telefone para contato</label>
+                <label for="telefone">Telefone para contato</label>
                 <input type="number"
                   class="form-control"
                   id="telefoneNumero"
