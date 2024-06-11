@@ -7,12 +7,16 @@ const Cadastrar_Usuario = () => {
   const [aviso, setAviso] = useState("");
 
   const salvar = async (campos) => {
+    console.log(campos)
     try {
-      const response = await api.post("usuarios", campos);
+      const response = await api.post("/usuarios", campos);
+      console.log( response.data);
       setAviso(`Usuário cadastrado com sucesso!"`);
       reset();
     } catch (error) {
+      console.log( error);
       setAviso("Erro ao cadastrar usuário!");
+      
     }
   };
 
@@ -24,27 +28,41 @@ const Cadastrar_Usuario = () => {
           <div className="row mb-3">
             <div className="col">
               <div className="form-group">
-                <label htmlFor="name">Nome</label>
+                <label htmlFor="usuarioNome">Nome</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="name"
+                  id="usuarioNome"
                   required
                   autoFocus
-                  {...register("name")}
+                  {...register("usuarioNome")}
                 />
               </div>
             </div>
             <div className="col">
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="usuarioEmaill">Email</label>
                 <input
                   type="email"
                   className="form-control"
-                  id="email"
+                  id="usuarioEmail"
                   placeholder="exemple@exemple.com"
                   required
-                  {...register("email")}
+                  {...register("usuarioEmail")}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="row mb-3">
+            <div className="col">
+              <div className="form-group">
+                <label htmlFor="usuarioSenha">Senha</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="usuarioSenha"
+                  required
+                  {...register("usuarioSenha")}
                 />
               </div>
             </div>
@@ -52,25 +70,25 @@ const Cadastrar_Usuario = () => {
           <div className="row mb-3">
             <div className="col-5">
               <div className="form-group">
-                <label htmlFor="cpf">CPF</label>
+                <label htmlFor="usuarioCpf">CPF</label>
                 <input
                   type="cpf"
                   className="form-control"
-                  id="cpf"
+                  id="usuarioCpf"
                   required
-                  {...register("cpf")}
+                  {...register("usuarioCpf")}
                 />
               </div>
             </div>
             <div className="col-4">
               <div className="form-group">
-                <label htmlFor="data_nascimento">Data de Nascimento</label>
+                <label htmlFor="usuarioDataNascimento">Data de Nascimento</label>
                 <input
                   type="date"
                   className="form-control"
-                  id="data_nascimento"
+                  id="usuarioDataNascimento"
                   required
-                  {...register("data_nascimento")}
+                  {...register("usuarioDataNascimento")}
                 />
               </div>
             </div>
@@ -78,49 +96,49 @@ const Cadastrar_Usuario = () => {
           <div className="row mb-3">
             <div className="col-5">
               <div className="form-group">
-                <label for="rua">Rua</label>
+                <label for="enderecoRua">Rua</label>
                 <input type="text"
                   class="form-control"
-                  id="rua"
+                  id="enderecoRua"
                   placeholder="Av, Rod, Rua..."
                   required
-                  {...register("rua")}
+                  {...register("enderecoRua")}
                 />
               </div>
             </div>
             <div className="col-1">
               <div className="form-group">
-                <label for="numero">Número</label>
+                <label for="enderecoNumero">Número</label>
                 <input type="number"
                   class="form-control"
-                  id="numero"
+                  id="enderecoNumero"
                   placeholder="123..."
                   required
-                  {...register("numero")}
+                  {...register("enderecoNumero")}
                 />
               </div>
             </div>
             <div className="col">
               <div className="form-group">
-              <label for="cidade">Cidade</label>
+              <label for="enderecoCidade">Cidade</label>
                 <input type="text"
                   class="form-control"
-                  id="cidade"
-                  placeholder="Apartment, studio, or floor"
+                  id="enderecoCidade"
+                  placeholder="Insira a sua cidade"
                   required
-                  {...register("cidade")}
+                  {...register("enderecoCidade")}
                 />
               </div>
             </div>
             <div className="col">
               <div className="form-group">
-              <label for="bairro">Bairro</label>
+              <label for="enderecoBairro">Bairro</label>
                 <input type="text"
                   class="form-control"
-                  id="bairro"
-                  placeholder="Apartment, studio, or floor"
+                  id="enderecoBairro"
+                  placeholder="Insira o seu bairro"
                   required
-                  {...register("bairro")}
+                  {...register("enderecoBairro")}
                 />
               </div>
             </div>
@@ -128,34 +146,59 @@ const Cadastrar_Usuario = () => {
           <div className="row mb-3">
           <div className="col">
               <div className="form-group">
-              <label htmlFor="estado">Estado</label>
-                <select id="estado" className="form-control">
+              <label htmlFor="enderecoEstado">Estado</label>
+                <select id="enderecoEstado" 
+                className="form-control">
                   <option selected>Selecione...</option>
-                  <option>...</option>
+                  <option value="AC">ACRE</option>
+                  <option value="AL">ALAGOAS</option>
+                  <option value="AP">AMAPÁ</option>
+                  <option value="AM">AMAZONAS</option>
+                  <option value="BA">BAHIA</option>
+                  <option value="CE">CEARÁ</option>
+                  <option value="ES">ESPIRÍTO SANTO</option>
+                  <option value="GO">GOIÁS</option>
+                  <option value="MT">MATO GROSSO</option>
+                  <option value="MS">MATO GROSSO DO SUL</option>
+                  <option value="MG">MINAS GERAIS</option>
+                  <option value="PA">PARÁ</option>
+                  <option value="PB">PARAÍBA</option>
+                  <option value="PR">PARANÁ</option>
+                  <option value="PE">PERNAMBUCO</option>
+                  <option value="PI">PIAUÍ</option>
+                  <option value="RJ">RIO DE JANEIRO</option>
+                  <option value="RN">RIO GRANDE DO NORTE</option>
+                  <option value="RS">RIO GRANDE DO SUL</option>
+                  <option value="RO">RONDÔNIA</option>
+                  <option value="RR">RORAIMA</option>
+                  <option value="SC">SANTA CATARINA</option>
+                  <option value="SP">SÃO PAULO</option>
+                  <option value="SE">SERGIPE</option>
+                  <option value="TO">TOCANTINS</option>
                 </select>
               </div>
             </div>
             <div className="col">
               <div className="form-group">
-              <label htmlFor="cep">CEP</label>
+              <label htmlFor="enderecoCep">CEP</label>
                 <input type="text"
                  className="form-control" 
-                 id="cep" 
-                 placeholder="XXXXXX-XXX"
+                 id="enderecoCep" 
+                 placeholder="XXXXX-XXX"
                   required
-                  {...register("bairro")}
+                  {...register("enderecoCep")}
                  />
               </div>
             </div>
             <div className="col">
               <div className="form-group">
-                <label for="telefone">Telefone para contato</label>
+                <label for="telefoneNumero">Telefone para contato</label>
                 <input type="number"
                   class="form-control"
-                  id="telefone"
+                  id="telefoneNumero"
                   placeholder="9999-9999"
                   required
-                  {...register("telefone")}
+                  {...register("telefoneNumero")}
                 />
               </div>
             </div>

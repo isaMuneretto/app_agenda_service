@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2229b779-6be8-4e2b-8256-d16d48202abd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/app_agenda_service/src/components/cadastrar_usuario.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app_agenda_service/src/components/cadastrar_usuario.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_agenda_service/src/config_axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_agenda_service/src/config_axios.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/app_agenda_service" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2hi0ChgISd1BalHzMuUGkOpVmGc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/rhaisa_julia/Documents/Desenvolvimento - Filipe/app_agenda_service"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2229b779-6be8-4e2b-8256-d16d48202abd" name="Changes" comment="" />
+      <created>1718061464616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718061464616</updated>
+    </task>
+    <servers />
+  </component>
+</project>
