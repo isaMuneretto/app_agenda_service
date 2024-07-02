@@ -8,7 +8,26 @@ const Cadastrar_Prestador = () => {
 
   const salvar = async (campos) => {
     try {
-      const response = await api.post("prestador", campos);
+      const responsePrestador = await api.post("prestadores", {
+        prestadorNome: campos.prestadorNome,
+        prestadorCnpj: campos.prestadorCnpj,
+        prestadorCpf: campos.prestadorCpf,
+        prestadorRazaoSocial: campos.prestadorRazaoSocial,
+        prestadorEmail: campos.prestadorEmail,
+        prestadorSenha: campos.prestadorSenha,
+        
+      });
+
+      const prestadorId = responsePrestador.data.prestadorId; 
+      console.log(prestadorId);
+
+      await api.post("telefone", {
+        prestador:{
+          prestador_id: prestadorId
+        },
+          telefoneNumero: campos.telefoneNumero,
+      });
+
       setAviso(`Prestador cadastrado com sucesso!"`);
       reset();
     } catch (error) {
