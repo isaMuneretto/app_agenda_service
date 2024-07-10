@@ -1,129 +1,165 @@
 import { useForm } from "react-hook-form";
 import { api } from "../../config_axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker";
+import { Helmet } from "react-helmet";
 
-const Cadastrar_Agendamento = () => {
-  const { register, handleSubmit, reset } = useForm();
+const Agendamento = () => {
+  const { register, handleSubmit, reset, watch } = useForm();
   const [aviso, setAviso] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState("00:00");
+  const [servicos, setServicos] = useState([]);
+  const [prestador, setPrestador] = useState([]);
+  const [selectedServicoNome, setSelectedServicoNome] = useState("");
 
-  const salvar = async (campos) => {
+  useEffect(() => {
+    const fetchServicos = async () => {
+      try {
+        const response = await api.get("/servicos");
+        setServicos(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar serviços", error);
+      }
+    };
+
+    fetchServicos();
+  }, []);
+
+  const buscarPrestadoresPorNomeServico = async (servicoNome) => {
+    if (!servicoNome) return;
+
     try {
-      const response = await api.post("agendamento", campos);
-      setAviso(`Usuário cadastrado com sucesso!"`);
-      reset();
+      const response = await api.get(`/prestadores/search?servicoNome=${servicoNome}`);
+      setPrestador(response.data);
+      console.log(response.data);
+
     } catch (error) {
-      setAviso("Erro ao cadastrar usuário!");
+      console.error("Erro ao buscar prestadores por nome do serviço", error);
     }
   };
 
+  const handleServicoChange = (event) => {
+    console.log("Event target value:", event.target.value);
+    console.log("Servicos array:", servicos); // Log do array servicos
+
+    const servicoEncontrado = servicos.find(servico => servico.servicoId === parseInt(event.target.value, 10));
+    console.log("Servico encontrado:", servicoEncontrado); // Log do serviço encontrado
+
+    const servicoNome = servicoEncontrado?.servicoNome;
+    console.log("Servico Nome:", servicoNome);
+
+    setSelectedServicoNome(servicoNome);
+    console.log("Selected Servico Nome:", selectedServicoNome); // Log do estado selectedServicoNome
+
+    buscarPrestadoresPorNomeServico(servicoNome);
+  };
+
+
+  const salvar = async (campos) => {
+    try {
+      const camposCompletos = {
+        ...campos,
+        agendamentoHora: selectedTime,
+        servicos: { servicoId: watch("servicoId") }
+      };
+
+      const response = await api.post("agendamento", camposCompletos);
+      setAviso(`Agendamento realizado com sucesso!"`);
+      reset();
+    } catch (error) {
+      setAviso("Erro ao fazer agendamento!");
+    }
+  };
+
+  useEffect(() => {
+    console.log("Servicos:", servicos);
+  }, [servicos]);
+
   return (
-    <div className="container-fluid bg-dark text-light min-vh-100 d-flex align-items-center">
-      <div className="container p-5 bg-light text-dark rounded">
-        <h4 className="fst-italic mb-3">Agendamento</h4>
-        
-        <form onSubmit={handleSubmit(salvar)}>
-          <div className="row mb-3">
-            <div className="col">
-              <div className="form-group">
-                <label htmlFor="servico">Serviços</label>
-                <select id="servico" className="form-control">
-                  <option selected>Selecione...</option>
-                  <option>Marido de aluguel</option>
-                  <option>Eletricista</option>
-                  <option>Encanador</option>
-                  <option>Cortar grama</option>
-                </select>
-              </div>
+    <>
+      <Helmet>
+        <title>Agendamento</title>
+      </Helmet>
+      <div className="container-fluid bg-dark text-light min-vh-100 d-flex align-items-center">
+        <div className="container p-5 bg-light text-dark rounded">
+          <h4 className="fst-italic mb-3">Agendamento</h4>
+          <form onSubmit={handleSubmit(salvar)}>
+            <div className="input-group mb-3">
+              <input
+                className="form-control"
+                type="search"
+                placeholder="Serviços"
+                aria-label="Serviços"
+                {...register("servicoNome")}
+              />
+              <button
+                className="btn btn-outline-success"
+                type="button"
+                onClick={() => buscarPrestadoresPorNomeServico(watch("servicoNome"))}
+              >
+                Pesquisar
+              </button>
             </div>
-            <div className="col">
-              <div className="form-group">
-              <label htmlFor="prestadores">Prestadores de Serviço</label>
-                <select id="prestadores" className="form-control">
-                  <option selected>Selecione...</option>
-                  <option>João da Silva</option>
-                  <option>Paulo Rodrigues</option>
-                  <option>José dos Santos</option>
-                  <option>Renata Souza</option>
-                </select>
-              </div>
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              {...register("servicoId")}
+              defaultValue=""
+              onChange={handleServicoChange}
+            >
+              <option value="" disabled>Selecione um serviço</option>
+              {servicos.map((servico) => (
+                <option key={servico.servicoId} value={servico.servicoId}>
+                  {servico.servicoNome}
+                </option>
+              ))}
+            </select>
+            <br />
+            <select
+              className="form-select"
+              aria-label="Prestadores"
+              {...register("prestadorId")}
+              defaultValue=""
+              disabled={!selectedServicoNome}
+            >
+              <option value="" disabled>Selecione um prestador</option>
+              {prestador.map((prestador) => (
+                <option key={prestador.prestadorId} value={prestador.prestadorId}>
+                  {prestador.prestadorNome}
+                </option>
+              ))}
+            </select>
+            <br />
+            <div>
+              <label>Escolha a data que você deseja agendar o Serviço:</label>
+              <br />
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                dateFormat="dd/MM/yyyy"
+                className="form-control"
+              />
             </div>
-          </div>
-          <div className="row mb-3">
-            <div className="col-5">
-              <div className="form-group">
-                <label htmlFor="data_inicio">Data Início</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  id="data_inicio"
-                  required
-                  {...register("data_inicio")}
-                />
-              </div>
+            <br />
+            <h6>Selecione um horário:</h6>
+            <div className="input-group mb-3">
+              <input
+                type="time"
+                className="form-control"
+                value={selectedTime}
+                onChange={(e) => setSelectedTime(e.target.value)}
+              />
             </div>
-            <div className="col-4">
-              <div className="form-group">
-              <label htmlFor="hora">Horário</label>
-                <input
-                  type="time"
-                  className="form-control"
-                  id="hora"
-                  required
-                  {...register("hora")}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="row mb-3">
-            <div className="col-5">
-              <div className="form-group">
-                <label for="obs">Observação</label>
-                <input type="text"
-                  class="form-control"
-                  id="obs"
-                  required
-                  {...register("obs")}
-                />
-              </div>
-            </div>
-            <div className="col">
-              <div className="form-group">
-                <label for="telefone">Telefone para contato</label>
-                <input type="number"
-                  class="form-control"
-                  id="telefone"
-                  placeholder="9999-9999"
-                  required
-                  {...register("telefone")}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="form-group">
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" id="gridCheck" />
-              <label className="form-check-label" htmlFor="gridCheck">
-                Teste
-              </label>
-            </div>
-          </div>
-
-          <input
-            type="submit"
-            className="btn btn-primary mt-3"
-            value="Agendar"
-          />
-          <input
-            type="reset"
-            className="btn btn-danger mt-3 ms-3"
-            value="Limpar"
-          />
-        </form>
-        <div className="alert mt-3">{aviso}</div>
+            <br />
+            <button type="submit" className="btn btn-primary">Agendar</button>
+          </form>
+          <div className="alert mt-3">{aviso}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default Cadastrar_Agendamento;
+export default Agendamento;

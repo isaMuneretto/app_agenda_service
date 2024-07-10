@@ -28,7 +28,7 @@ const Cadastrar_Usuario = () => {
         telefoneNumero: campos.telefoneNumero,
       });
 
-      setAviso("Usuário cadastrado com sucesso!");
+      setAviso("Usuário e telefone cadastrado com sucesso!");
       reset();
     } catch (error) {
       console.log(error);
@@ -43,6 +43,7 @@ const Cadastrar_Usuario = () => {
       </Helmet>
       <div className="container-fluid bg-light text-dark min-vh-100 d-flex align-items-center">
         <div className="container p-4 bg-body-secondary text-dark rounded">
+        <h4 className="fst-italic mb-3">Preencha os campos para se cadastrar</h4>
           <form onSubmit={handleSubmit(salvar)}>
             <div className="row mb-3">
               <div className="col">
@@ -127,6 +128,79 @@ const Cadastrar_Usuario = () => {
                 </div>
               </div>
             </div>
+            {/*<div className="row mb-3">
+            <div className="col-5">
+              <div className="form-group">
+                <label for="rua">Rua</label>
+                <input type="text"
+                  class="form-control"
+                  id="rua"
+                  placeholder="Av, Rod, Rua..."
+                  required
+                  {...register("rua")}
+                />
+              </div>
+            </div>
+            <div className="col-1">
+              <div className="form-group">
+                <label for="numero">Número</label>
+                <input type="number"
+                  class="form-control"
+                  id="numero"
+                  placeholder="123..."
+                  required
+                  {...register("numero")}
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div className="form-group">
+              <label for="cidade">Cidade</label>
+                <input type="text"
+                  class="form-control"
+                  id="cidade"
+                  placeholder="Apartment, studio, or floor"
+                  required
+                  {...register("cidade")}
+                />
+              </div>
+            </div>
+            <div className="col">
+              <div className="form-group">
+              <label for="bairro">Bairro</label>
+                <input type="text"
+                  class="form-control"
+                  id="bairro"
+                  placeholder="Apartment, studio, or floor"
+                  required
+                  {...register("bairro")}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="row mb-3">
+          <div className="col">
+              <div className="form-group">
+              <label htmlFor="estado">Estado</label>
+                <select id="estado" className="form-control">
+                  <option selected>Selecione...</option>
+                  <option>...</option>
+                </select>
+              </div>
+            </div>
+            <div className="col">
+              <div className="form-group">
+              <label htmlFor="cep">CEP</label>
+                <input type="text"
+                 className="form-control" 
+                 id="cep" 
+                 placeholder="XXXXXX-XXX"
+                  required
+                  {...register("bairro")}
+                 />
+              </div>
+            </div>*/}
+
             <input
               type="submit"
               className="btn btn-primary mt-3"

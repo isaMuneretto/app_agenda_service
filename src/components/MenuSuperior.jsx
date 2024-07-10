@@ -3,27 +3,27 @@ import { Link } from "react-router-dom";
 
 const MenuSuperior = () => {
 
-
-  const handleVoltar = () => {
-    window.location.href = '/login'; // Redireciona para a rota /login
-  };
-  
-
   return (
 
     <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-      <div class="container-fluid">
-      <a class="btn btn-light" href="/login" role="button">Voltar</a>
-        <Link to="/agenda" className="navbar-brand">Agendamento de serviço</Link>
-        
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-light" type="submit">Search</button>
-        </form>
+      <div className="container">
 
-        <a class="btn btn-light" href="/login" role="button">Sair</a>
-
-       
+        <Link to="/" className="navbar-brand">{nome}</Link>
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link to="/prestador" className="nav-link">Cadastrar Prestador</Link>
+          </li>
+          
+          <li className="nav-item">
+            <Link to="/agenda" className="nav-link">Agendamentos</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/user" className="nav-link">Cadastrar Usuário</Link>
+          </li>
+          
+        </ul>
+            {/* {<a class="btn btn-light" href="/login" role="button">Sair</a>} */}
+        <button onClick={logout} className="navbar-brand">Logout</button>
       </div>
     </nav>
   );
