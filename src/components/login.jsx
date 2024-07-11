@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAuth from "./useAuth"; // Ajuste o caminho conforme necessário
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useNavigate } from 'react-router-dom';
 
 const FormularioLogin = () => {
@@ -43,9 +43,11 @@ const FormularioLogin = () => {
 
     return (
         <>
+        <HelmetProvider>
             <Helmet>
                 <title>Login</title>
             </Helmet>
+        </HelmetProvider>
         <div className="container-fluid bg-light py-2">
             <div className="container d-flex align-items-center justify-content-center vh-100">
                 <div className="p-5 bg-body-secondary rounded-3 border border-2 w-28">
@@ -78,6 +80,7 @@ const FormularioLogin = () => {
                 </div>
             </div>
         </div>
+        <footer className="text-center mt-4">Todos os direitos reservados.</footer>
         </>
     )
 };

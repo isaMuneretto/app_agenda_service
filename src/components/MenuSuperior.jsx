@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
-
+import useAuth from './useAuth';
 
 const MenuSuperior = () => {
+  const { logout } = useAuth();
 
   return (
 
     <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
       <div className="container">
 
-        <Link to="/" className="navbar-brand">{nome}</Link>
+       
         <ul className="navbar-nav">
           <li className="nav-item">
             <Link to="/prestador" className="nav-link">Cadastrar Prestador</Link>

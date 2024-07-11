@@ -13,7 +13,7 @@ const Cadastrar_Usuario = () => {
       const responseUsuario = await api.post("usuarios", {
         usuarioNome: campos.usuarioNome,
         usuarioCpf: campos.usuarioCpf,
-        email: campos.email,
+        email: campos.usuarioEmail,
         usuarioDataNascimento: campos.usuarioDataNascimento,
         usuarioSenha: campos.usuarioSenha,
       });

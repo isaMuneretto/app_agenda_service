@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { api } from "../config_axios";
 import { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const Cadastrar_Prestador = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -37,9 +37,11 @@ const Cadastrar_Prestador = () => {
 
   return (
     <>
+    <HelmetProvider>
       <Helmet>
         <title>Cadastro de Prestadores</title>
       </Helmet>
+      </HelmetProvider>
       <div className="container-fluid bg-light text-dark min-vh-100 d-flex align-items-center">
         <div className="container p-4 bg-body-secondary text-dark rounded">
           <h4 className="fst-italic mb-3">Preencha o formulário para se cadastrar</h4>
