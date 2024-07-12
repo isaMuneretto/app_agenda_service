@@ -42,9 +42,9 @@ const Cadastrar_Prestador = () => {
         <title>Cadastro de Prestadores</title>
       </Helmet>
       </HelmetProvider>
-      <div className="container-fluid bg-light text-dark min-vh-100 d-flex align-items-center">
-        <div className="container p-4 bg-body-secondary text-dark rounded">
-          <h4 className="fst-italic mb-3">Preencha o formulário para se cadastrar</h4>
+      <div className="container-fluid bg-dark text-light min-vh-100 d-flex align-items-center">
+        <div className="container p-5 bg-light text-dark rounded">
+          <h4 className="fst-italic mb-3">Preencha o formulário para se cadastrar como prestador</h4>
           <form onSubmit={handleSubmit(salvar)}>
             <div className="row mb-3">
               <div className="col">
@@ -245,12 +245,12 @@ const Cadastrar_Prestador = () => {
             */}
             <input
               type="submit"
-              className="btn btn-primary mt-3"
+              className="btn btn-dark me-2"
               value="Cadastrar"
             />
             <input
               type="reset"
-              className="btn btn-danger mt-3 ms-3"
+              className="btn btn-light"
               value="Limpar"
             />
           </form>

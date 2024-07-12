@@ -6,10 +6,8 @@ const MenuSuperior = () => {
 
   return (
 
-    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-      <div className="container">
-
-       
+    <nav class="navbar navbar-expand-lg bg-body-black">
+      <div className="container">     
         <ul className="navbar-nav">
           <li className="nav-item">
             <Link to="/prestador" className="nav-link">Cadastrar Prestador</Link>
@@ -24,9 +22,11 @@ const MenuSuperior = () => {
           
         </ul>
             {/* {<a class="btn btn-light" href="/login" role="button">Sair</a>} */}
-        <button onClick={logout} className="navbar-brand">Logout</button>
+        <button onClick={logout} className="btn btn-light">Logout</button>
       </div>
     </nav>
+
+    
   );
 };
 

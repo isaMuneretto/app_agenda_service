@@ -5,7 +5,7 @@ const LogoutButton = () => {
     const { logout } = useAuth();
 
     return (
-        <button onClick={logout} className="btn btn-danger">
+        <button onClick={logout} type="button" class="btn btn-outline-dark">
             Logout
         </button>
     );

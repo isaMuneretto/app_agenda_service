@@ -153,7 +153,7 @@ const Agendamento = () => {
               />
             </div>
             <br />
-            <button type="submit" className="btn btn-primary">Agendar</button>
+            <button type="submit" className="btn btn-dark">Agendar</button>
           </form>
           <div className="alert mt-3">{aviso}</div>
         </div>

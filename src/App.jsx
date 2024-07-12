@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import useAuth from './components/useAuth'; // Ajuste o caminho conforme necessário
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MenuSuperior from './components/MenuSuperior.jsx';
+import "./css/usuario.css";
 
 const App = () => {
     const { autenticado } = useAuth();
