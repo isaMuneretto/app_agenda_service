@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { api } from "../../config_axios";
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet";
 
 const Agendamento = () => {
@@ -31,9 +31,9 @@ const Agendamento = () => {
     if (!servicoNome) return;
 
     try {
-      const response = await api.get(`/prestadores/search?servicoNome=${servicoNome}`);
+      const response = await api.get(`/prestador/search?servicoNome=${servicoNome}`);
       setPrestador(response.data);
-      console.log(response.data);
+      console.log("prestadores lista"+response.data);
 
     } catch (error) {
       console.error("Erro ao buscar prestadores por nome do serviço", error);
@@ -42,20 +42,18 @@ const Agendamento = () => {
 
   const handleServicoChange = (event) => {
     console.log("Event target value:", event.target.value);
-    console.log("Servicos array:", servicos); // Log do array servicos
+    console.log("Servicos array:", servicos); 
 
-    const servicoEncontrado = servicos.find(servico => servico.servicoId === parseInt(event.target.value, 10));
-    console.log("Servico encontrado:", servicoEncontrado); // Log do serviço encontrado
+     const servicoEncontrado = servicos.find(servico => servico.servicoId === parseInt(event.target.value, 10));        
+     console.log("Servico encontrado:", servicoEncontrado);
 
     const servicoNome = servicoEncontrado?.servicoNome;
     console.log("Servico Nome:", servicoNome);
 
-    setSelectedServicoNome(servicoNome);
-    console.log("Selected Servico Nome:", selectedServicoNome); // Log do estado selectedServicoNome
-
-    buscarPrestadoresPorNomeServico(servicoNome);
-  };
-
+    setSelectedServicoNome(event.target.value);
+    
+    buscarPrestadoresPorNomeServico(event.target.value);
+};
 
   const salvar = async (campos) => {
     try {
@@ -64,8 +62,8 @@ const Agendamento = () => {
         agendamentoHora: selectedTime,
         servicos: { servicoId: watch("servicoId") }
       };
-
-      const response = await api.post("agendamento", camposCompletos);
+      console.log("Campos completos:", camposCompletos);
+      const response = await api.post("/agendamento", camposCompletos);
       setAviso(`Agendamento realizado com sucesso!"`);
       reset();
     } catch (error) {
@@ -76,6 +74,7 @@ const Agendamento = () => {
   useEffect(() => {
     console.log("Servicos:", servicos);
   }, [servicos]);
+
 
   return (
     <>
@@ -110,7 +109,7 @@ const Agendamento = () => {
               onChange={handleServicoChange}
             >
               <option value="" disabled>Selecione um serviço</option>
-              {servicos.map((servico) => (
+              {servicos.map(servico => (
                 <option key={servico.servicoId} value={servico.servicoId}>
                   {servico.servicoNome}
                 </option>
@@ -142,7 +141,7 @@ const Agendamento = () => {
                 className="form-control"
               />
             </div>
-            <br />
+            
             <h6>Selecione um horário:</h6>
             <div className="input-group mb-3">
               <input

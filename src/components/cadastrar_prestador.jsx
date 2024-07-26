@@ -9,7 +9,7 @@ const Cadastrar_Prestador = () => {
 
   const salvar = async (campos) => {
     try {
-      const responsePrestador = await api.post("prestadores", {
+      const responsePrestador = await api.post("prestador", {
         prestadorNome: campos.prestadorNome,
         prestadorCnpj: campos.prestadorCnpj,
         prestadorCpf: campos.prestadorCpf,
@@ -60,19 +60,7 @@ const Cadastrar_Prestador = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="prestadorCpf">CPF</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="prestadorCpf"
-                    required
-                    {...register("prestadorCpf")}
-                  />
-                </div>
-              </div>
-              <div className="col">
-                <div className="form-group">
-                  <label htmlFor="prestadorEmail">Email</label>
+                <label htmlFor="prestadorEmail">Email</label>
                   <input
                     type="email"
                     className="form-control"
@@ -80,6 +68,18 @@ const Cadastrar_Prestador = () => {
                     placeholder="exemple@exemple.com"
                     required
                     {...register("prestadorEmail")}
+                  />
+                </div>
+              </div>
+              <div className="col">
+                <div className="form-group">
+                  <label htmlFor="prestadorCpf">CPF</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="prestadorCpf"
+                    required
+                    {...register("prestadorCpf")}
                   />
                 </div>
               </div>
@@ -99,7 +99,7 @@ const Cadastrar_Prestador = () => {
               </div>
             </div>
             <div className="row mb-3">
-              <div className="col-5">
+              <div className="col-3">
                 <div className="form-group">
                   <label htmlFor="prestadorCnpj">CNPJ</label>
                   <input
@@ -124,8 +124,7 @@ const Cadastrar_Prestador = () => {
                 </div>
               </div>
             </div>
-            <div className="row mb-3">
-              <div className="col">
+              <div className="col-2">
                 <div className="form-group">
                   <label htmlFor="telefone">Telefone para contato</label>
                   <input
@@ -138,7 +137,7 @@ const Cadastrar_Prestador = () => {
                   />
                 </div>
               </div>
-            </div>
+         
             {/* 
             <div className="row mb-3">
               <div className="col-5">
